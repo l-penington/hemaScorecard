@@ -3966,3 +3966,27 @@ ALTER TABLE `systemUserEvents`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+/* TODO: move this up to a more sensible position once this is working nicely */
+
+
+--
+-- Table structure for table `logisticsFaq`
+--
+
+CREATE TABLE `logisticsFaq` (
+  `eventID` int(10) UNSIGNED DEFAULT NULL,
+   `faqID` int(10) UNSIGNED DEFAULT NULL,
+   faqQuestion text NOT NULL,
+   faqAnswer text NOT NULL,
+   faqOrder int (10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `logisticsFaq`
+  ADD PRIMARY KEY (`faqID`),
+  ADD KEY `eventID` (`eventID`);
+
+ALTER TABLE `logisticsFaq`
+  ADD CONSTRAINT `logisticsFaq_ibfk_1` FOREIGN KEY (`eventID`) REFERENCES `systemEvents` (`eventID`) ON DELETE CASCADE ON UPDATE CASCADE;
